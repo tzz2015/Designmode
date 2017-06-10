@@ -10,6 +10,11 @@ import android.widget.Toast;
 import com.example.fwms.designmode.build.Car;
 import com.example.fwms.designmode.build.CarBuilder;
 import com.example.fwms.designmode.build.SUVCarBuilder;
+import com.example.fwms.designmode.observer.Observable;
+import com.example.fwms.designmode.observer.Observer;
+import com.example.fwms.designmode.observer.Policeman;
+import com.example.fwms.designmode.observer.Policewoman;
+import com.example.fwms.designmode.observer.SillyThief;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.tv_singleton).setOnClickListener(this);
         findViewById(R.id.tv_build).setOnClickListener(this);
+        findViewById(R.id.tv_observer).setOnClickListener(this);
     }
 
     @Override
@@ -32,7 +38,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tv_build://创建者模式
                 createBuil();
                 break;
+            case R.id.tv_observer://观察者模式
+                observer();
+                break;
         }
+    }
+
+    private void observer() {
+        //被观察者
+        Observable thief=new SillyThief();
+        //观察者
+        Observer man=new Policeman();
+        Observer woman=new Policewoman();
+        //添加观察者
+        thief.addObserver(man);
+        thief.addObserver(woman);
+        //通知被观察者
+        thief.notifyObservers();
+
     }
 
     private void createBuil() {
