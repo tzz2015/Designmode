@@ -7,6 +7,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.fwms.designmode.build.Car;
+import com.example.fwms.designmode.build.CarBuilder;
+import com.example.fwms.designmode.build.SUVCarBuilder;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static Toast toast;
@@ -16,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.tv_singleton).setOnClickListener(this);
+        findViewById(R.id.tv_build).setOnClickListener(this);
     }
 
     @Override
@@ -24,7 +29,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tv_singleton://单例模式
                 showToast(getApplicationContext(), Singleton.getSingleton().getText());
                 break;
+            case R.id.tv_build://创建者模式
+                createBuil();
+                break;
         }
+    }
+
+    private void createBuil() {
+        CarBuilder builder = new SUVCarBuilder();
+        Car car = builder.setColor("黑色")
+                .setPower("2.0T")
+                .setHeight(2)
+                .create();
+        showToast(getApplicationContext(),car.getColor()+"!"+car.getPower()+"!"+car.getHeight());
     }
 
 
