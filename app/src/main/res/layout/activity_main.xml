@@ -36,6 +36,16 @@
           android:gravity="center"
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
+      <TextView
+          android:id="@+id/tv_tenet"
+          android:padding="15dp"
+          android:text="六大原则"
+          android:textSize="18sp"
+          android:background="@android:color/holo_green_dark"
+          android:textColor="@android:color/white"
+          android:gravity="center"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
    </LinearLayout>
 
 </ScrollView>

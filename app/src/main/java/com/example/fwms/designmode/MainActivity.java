@@ -1,6 +1,7 @@
 package com.example.fwms.designmode;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -15,6 +16,7 @@ import com.example.fwms.designmode.observer.Observer;
 import com.example.fwms.designmode.observer.Policeman;
 import com.example.fwms.designmode.observer.Policewoman;
 import com.example.fwms.designmode.observer.SillyThief;
+import com.example.fwms.designmode.tenet.TenetActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,11 +29,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.tv_singleton).setOnClickListener(this);
         findViewById(R.id.tv_build).setOnClickListener(this);
         findViewById(R.id.tv_observer).setOnClickListener(this);
+        findViewById(R.id.tv_tenet).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_tenet://六大原则
+                startActivity(new Intent(getApplicationContext(), TenetActivity.class));
+                break;
             case R.id.tv_singleton://单例模式
                 showToast(getApplicationContext(), Singleton.getSingleton().getText());
                 break;
