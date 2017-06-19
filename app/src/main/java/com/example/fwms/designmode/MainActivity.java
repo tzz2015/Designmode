@@ -2,10 +2,11 @@ package com.example.fwms.designmode;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fwms.designmode.build.Car;
@@ -21,6 +22,9 @@ import com.example.fwms.designmode.tenet.TenetActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static Toast toast;
+    private final String TAG=getClass().getName();
+    private TextView tv_singleton;
+    private int height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
